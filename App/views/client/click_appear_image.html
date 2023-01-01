@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>click_appear</title>
+    <style>
+        p {
+            text-align: center;
+            margin: 25px;
+        }
+
+        div.images {
+            height: 50px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        div.images div {
+            display: flex;
+            gap: 40px;
+        }
+
+        div.product-picture {
+            width: 600px;
+            height: 600px;
+            margin: 0 auto;
+        }
+
+        div.product-picture img {
+            width: 100%;
+            object-fit: cover;
+        }
+
+        div.product-picture img:hover {
+            background-color: green;
+        }
+
+        .border_img {
+            border: 3px solid black;
+        }
+
+        /*Modal Script*/
+
+        /*Connexion*/
+
+        .modalDialog {
+            position: fixed;
+            font-family: Arial, Helvetica, sans-serif;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            opacity: 1;
+            background: rgba(0, 0, 0, 0.1);
+            z-index: 99999;
+            -webkit-transition: opacity 400ms ease-in;
+            -moz-transition: opacity 400ms ease-in;
+            transition: opacity 400ms ease-in;
+
+        }
+
+        .modalDialog>article {
+            width: 97vw;
+            height: 96.5vh;
+            position: relative;
+            /* margin: 5% auto; */
+            padding: 5px 20px 13px 20px;
+            border-radius: 10px;
+            padding: 0;
+            margin: 1rem;
+            background-color: white;
+            margin: 1rem auto;
+        }
+
+        .close {
+            background: #606061;
+            color: #ffffff;
+            line-height: 25px;
+            position: absolute;
+            right: -12px;
+            text-align: center;
+            top: -10px;
+            width: 24px;
+            text-decoration: none;
+            font-weight: bold;
+            -webkit-border-radius: 12px;
+            -moz-border-radius: 12px;
+            border-radius: 12px;
+            -moz-box-shadow: 1px 1px 3px #000;
+            -webkit-box-shadow: 1px 1px 3px #000;
+            box-shadow: 1px 1px 3px #000;
+        }
+
+        .close:hover {
+            background: #6ed1d8;
+        }
+
+        div.modalDialog article div.images_block_moddal {
+            display: flex;
+            gap: 15rem;
+            width: 100%;
+
+        }
+
+        div.modalDialog {
+            display: none;
+            background-color: #696868;
+        }
+
+
+        .images_zone {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 1rem;
+            margin: 2rem;
+
+        }
+
+        .images_zone p {
+            font-size: 2rem;
+            padding: 0;
+            text-align: left;
+        }
+
+        .container_modal {
+            margin-top: 3.5rem;
+
+        }
+
+        /* .container_modal>img{
+        width: 100%;
+        height: auto;
+       } */
+
+
+        div.product-picture>img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* .container_modal img{
+        width: 100%;
+        height: auto;
+       } */
+        /* .images>div{
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+       } */
+        /* .container_modal>img{
+             width: 100%;
+             height: auto;
+       } */
+        /* .modalDialog>div{
+        display: flex;
+     }
+     .modalDialog div div.images div{
+        display: flex;
+     } */
+        /*End modal script*/
+    </style>
+</head>
+
+<body>
+    <div class="product-picture">
+        <img src="product-1/slide-1-lg.jpg" alt="">
+    </div>
+    <p>Photos non contractuelles</p>
+    <div class="images">
+        <div>
+            <img width="60px" padding="0.7rem" src="product-1/slide-1-md.jpg" alt="">
+            <img width="60px" padding="0.7rem" src="product-1/slide-2-md.jpg" alt="">
+            <img width="60px" padding="0.7rem" src="product-1/slide-3-md.jpg" alt="">
+            <img width="60px" padding="0.7rem" src="product-1/slide-4-md.jpg" alt="">
+            <img width="60px" padding="0.7rem" src="product-1/slide-5-md.jpg" alt="">
+        </div>
+    </div>
+
+
+    <div id="openModal" class="modalDialog">
+
+        <article>
+            <a href="#close" title="Close" class="close" id="close1">X</a>
+            <div class="images_block_moddal">
+                <div class="images_zone">
+                    <h2>AOC 24B1XHS</h2>
+                    <img src="product-1/slide-1-md.jpg" width="60px" padding="0.7rem" alt="">
+                    <img src="product-1/slide-2-md.jpg" width="60px" padding="0.7rem" alt="">
+                    <img src="product-1/slide-3-md.jpg" width="60px" padding="0.7rem" alt="">
+                    <img src="product-1/slide-4-md.jpg" width="60px" padding="0.7rem" alt="">
+                    <img src="product-1/slide-5-md.jpg" width="60px" padding="0.7rem" alt="">
+                </div>
+                <div class="container_modal">
+                    <img src="product-1/slide-1-lg.jpg" id="modal_image" width="900px" height="880px" alt="">
+                </div>
+
+            </div>
+
+        </article>
+    </div>
+
+    <script>
+        let tab = ["product-1/slide-1-lg.jpg", "product-1/slide-2-lg.jpg", "product-1/slide-3-lg.jpg", "product-1/slide-4-lg.jpg", "product-1/slide-5-lg.jpg"]
+        let container = document.querySelector(".container>img");
+        let images_block = document.querySelectorAll(".images img");
+        images_block.forEach(function (element, index) {
+            element.addEventListener("click", function (e) {
+                e.preventDefault();
+                container.setAttribute("src", tab[index]);
+
+                // element.classList.add("border_img");
+            })
+        });
+
+        /*Script largest modal*/
+
+        let closes = document.querySelector("#close1");
+        let openModal = document.querySelector("#openModal")
+        closes.addEventListener("click", function (e) {
+            openModal.style.display = "none";
+        })
+
+
+        let containerBlock = document.querySelector(".product-picture>img");
+        containerBlock.addEventListener("click", function (e) {
+
+            let container_modal = document.querySelector(".container_modal>img")
+            let srcSource = containerBlock.getAttribute("src")
+            openModal.style.display = "block";
+            container_modal.setAttribute("src", srcSource)
+        })
+        let modal_image = document.querySelector("#modal_image")
+        let images_zone = document.querySelectorAll(".images_zone img");
+        console.log(images_zone);
+        images_zone.forEach(function (element, index) {
+            element.addEventListener("click", function (e) {
+                e.preventDefault();
+                console.log("click");
+                let srcSource = element.getAttribute("src")
+                console.log(srcSource);
+                modal_image.setAttribute("src", srcSource);
+                // element.classList.add("border_img");
+            })
+        });
+
+    </script>
+</body>
+
+</html>

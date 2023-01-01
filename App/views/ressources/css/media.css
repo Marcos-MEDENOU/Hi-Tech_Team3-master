@@ -1,0 +1,163 @@
+@media only screen and (min-width: 480px) {
+
+    main {
+        padding: 0.5rem;
+    }
+
+    div.header_page {
+        flex-direction: row;
+    }
+
+    .search_glass {
+        display: none;
+    }
+
+    form.search-bar div {
+        display: inline;
+    }
+
+    .shop_list .flex_row_gap {
+        flex-wrap: wrap;
+    }
+
+    .shop_list>ul>li {
+        min-width: 46%;
+
+    }
+
+    table {
+        max-width: 900px;
+    }
+
+
+    td {
+        width: 100%;
+    }
+
+
+
+
+}
+
+@media only screen and (min-width: 960px) {
+
+    main {
+        padding: 0.5rem;
+    }
+
+    div.header_page {
+        flex-direction: row;
+    }
+
+    .no_user_item {
+        align-items: center;
+        gap: 2rem;
+
+    }
+
+    form.search-bar {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    form.search-bar div {
+        display: inline;
+    }
+
+    .shop_list>ul>li {
+        min-width: 22%;
+
+    }
+
+    /* début partie image "apprécier le design..."*/
+
+    .text-float {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .text-float>div {
+        flex-basis: 50%;
+    }
+
+    /* fin partie image "apprécier le design..."*/
+
+    /* début partie image "tout le confort..." et "moniteur full..." */
+
+    .display_flex {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .display_flex>div {
+        flex-basis: 50%;
+    }
+
+    .display_flex div:first-child {
+        order: 2;
+    }
+
+    .display_flex div:last-child {
+        order: 1;
+    }
+
+    /* fin partie image "tout le confort..." et "moniteur full..." */
+
+    .div_container_table>div {
+        display: flex;
+        align-items: center;
+        gap: 5rem;
+
+        margin-block-end: 55px;
+    }
+
+    .div_container_table>div>h3 {
+        flex-basis: 25%;
+    }
+
+    .div_container_table>div>table {
+        flex-basis: 75%;
+    }
+
+    /*Ajouter par marcos*/
+
+
+    div.divImage {
+        width: 50%;
+    }
+
+    div.divImage img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* .product-picture{
+            width: 45%;
+
+         }
+
+         .product-picture img{
+            width: 100%;
+            object-fit: cover;
+            height: auto;
+         } */
+
+    .details_product_add_to_paner {
+
+        flex-direction: row;
+
+    }
+
+
+    /**/
+
+
+    /************************/
+
+
+
+
+
+
+}

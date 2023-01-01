@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PANER</title>
+    <style>
+        .panner_increment {
+            position: absolute;
+            top: 0%;
+            left: 95%;
+            margin: 2rem;
+
+        }
+
+        .panner_increment span {
+            position: absolute;
+            right: 0;
+            margin: 1rem;
+
+        }
+
+        .paner {
+            margin-top: 10rem;
+        }
+
+        .panner_increment span span.span_increment {
+            background-color: red;
+            color: white;
+            margin: 0.2rem;
+            width: 1.6rem;
+            height: 1.6rem;
+            font-size: 1.2rem;
+            top: 0;
+            right: -3px;
+            border-radius: 50%;
+            text-align: center;
+            padding-top: 0.2rem;
+
+        }
+
+        .products_block div {
+            /* margin-top: 10rem; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+            /* margin: 3rem; */
+        }
+
+
+
+        .priceButt {
+            position: absolute;
+            border: 3px solid black;
+        }
+
+        .span_increment {
+            display: none;
+
+            /**/
+
+
+            /**/
+        }
+
+        .modalDialog {
+            position: fixed;
+            font-family: Arial, Helvetica, sans-serif;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            opacity: 1;
+            background: rgba(0, 0, 0, 0.6);
+            width: 100vw;
+            height: 100vh;
+            padding: 0;
+            z-index: 99999;
+            -webkit-transition: opacity 400ms ease-in;
+            -moz-transition: opacity 400ms ease-in;
+            transition: opacity 400ms ease-in;
+
+        }
+
+        .modalDialog>div {
+            width: 50vw;
+            height: 15vh;
+            position: relative;
+            margin: 15% auto;
+            padding: 5px 20px 13px 20px;
+            padding: 0;
+            margin: 1.5rem;
+            background-color: white;
+            margin: 3rem auto;
+        }
+
+
+        .modalDialog2 {
+            position: fixed;
+            font-family: Arial, Helvetica, sans-serif;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            opacity: 1;
+            background: rgba(0, 0, 0, 0.6);
+            width: 100vw;
+            height: 100vh;
+            padding: 0;
+            z-index: 99999;
+            -webkit-transition: opacity 400ms ease-in;
+            -moz-transition: opacity 400ms ease-in;
+            transition: opacity 400ms ease-in;
+
+        }
+
+        .modalDialog2>div {
+            width: 50vw;
+            position: relative;
+            margin: 15% auto;
+            padding: 5px 20px 13px 20px;
+            padding: 0;
+            margin: 1.5rem;
+            background-color: white;
+            margin: 3rem auto;
+        }
+
+        .close {
+            background: #606061;
+            color: #ffffff;
+            line-height: 25px;
+            position: absolute;
+            right: -12px;
+            text-align: center;
+            top: -10px;
+            width: 24px;
+            text-decoration: none;
+            font-weight: bold;
+            -webkit-border-radius: 12px;
+            -moz-border-radius: 12px;
+            border-radius: 12px;
+            -moz-box-shadow: 1px 1px 3px #000;
+            -webkit-box-shadow: 1px 1px 3px #000;
+            box-shadow: 1px 1px 3px #000;
+        }
+
+        .close:hover {
+            background: #6ed1d8;
+        }
+
+        #openModal div div.images_block_moddal {
+            display: flex;
+
+        }
+
+        .modal_zero_products {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 1.5rem;
+        }
+
+        .modal_zero_products span {
+            font-size: 2rem;
+        }
+
+        #openModal {
+            display: none;
+        }
+
+        #openModal2 {
+            display: none;
+            overflow: scroll;
+        }
+
+        span {
+            padding: 0;
+        }
+
+        .prices_panner {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .container_total_shop {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        table {
+            margin-top: 1.5rem;
+
+        }
+
+        table,
+        tr {
+            border: 1px solid rgb(97, 97, 97);
+            border-collapse: collapse;
+            font-size: 1.3rem;
+        }
+
+        td {
+            padding: 1.7rem;
+            border-top: 1px solid rgb(97, 97, 97);
+
+        }
+
+        .table2,
+        .tr2 {
+            border: transparent;
+            padding: 0;
+        }
+
+        .table2 {
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .td2 {
+            border: transparent;
+            padding: 0;
+        }
+
+        #link_validate_command {
+            background-color: #0c6588;
+            color: white;
+            padding: 1.2rem;
+        }
+
+        .price_and_add_buton {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="panner_increment">
+        <span class="">
+            <svg width="65px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+            </svg>
+            <span class="span_increment">0</span>
+            <div class="container_total_shop">
+                <p class="total_shop">0</p>
+                <p>€</p>
+            </div>
+        </span>
+    </div>
+    <div class="paner">
+
+        <div id="openModal" class="modalDialog">
+            <div>
+                <a href="#close" title="Close" class="close" id="close1">X</a>
+                <div class="modal_zero_products">
+                    <span>Mon panier</span>
+                    <p>Aucun article </p>
+                </div>
+            </div>
+        </div>
+
+        <div id="openModal2" class="modalDialog2">
+            <div>
+                <a href="#close" title="Close" class="close" id="close2">X</a>
+                <div class="modal_zero_products">
+                    <span>Mon panier</span>
+                    <table id="table1">
+                        <tr>
+                            <td>TOTAL</td>
+                            <td id="total_add_click"></td>
+                            <td id="total_command"></td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="table2">
+                        <tr class="tr2">
+                            <td class="td2">
+                                <a id="link_validate_command" href="#">Valider la commande</a>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="products_block">
+            <div>
+                <div class="price_and_add_buton">
+
+                    <img width="250px" padding="0.7rem" src="product-1/slide-1-md.jpg" alt="AOC 24B1XHS Black">
+                    <h2>AOC 24B1XHS Black</h2>
+                    <div class="priceButt">
+                        <span class="price">18.89</span> <span>€</span> <button class="button_add">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        let prices_for_all_shop = document.querySelectorAll(".price")
+        let openModal = document.querySelector("#openModal")
+        let openModal2 = document.querySelector("#openModal2")
+        let buttonAdd = document.querySelectorAll(".button_add");
+        let span_increment = document.querySelector(".span_increment");
+        let panner_increment = document.querySelector(".panner_increment>span");
+        let total_shop = document.querySelector(".total_shop")
+        let total_add_click = document.querySelector("#total_add_click")
+        let total_command = document.querySelector("#total_command")
+        let table1 = document.querySelector("#table1")
+        let delete_product_select = document.querySelectorAll("#table1 tr")
+
+
+        let obj_tab=[];
+    
+        /****************** all prices to number******************/
+        function convertToNumber(number) {
+            return Number(number)
+        }
+        /****************** end all prices to number************/
+
+
+        /*************************************add element to modal*/
+        buttonAdd.forEach(function (element, index) {
+            element.addEventListener("click", function (e) {
+                e.preventDefault();
+                let compt=0;
+                obj_tab.push({name:"marcos", click:compt++})
+                span_increment.textContent++;
+                span_increment.style.display = "block"
+                total_shop.innerHTML = (Number(total_shop.textContent) + Number(tab[index])).toFixed(2);
+                let tr = document.createElement('tr')
+                tr.innerHTML =
+                    `
+                        <td></td>
+                        <td id="total_add_click">1</td>
+                        <td id="total_command">${tab[index]}</td>
+                        <td ><buttton id="delete_product_select" style="background-color:#0c6588; padding:1rem ; color:white ; text-align:right"; >X</button></td>               
+                `
+                tr.style.padding = "1.2rem"
+                table1.prepend(tr)
+                console.log(delete_product_select);
+            })
+        })
+        /********************************end add element to modal*/
+
+
+
+        /********************************close part*/
+        let closse = document.querySelector("#close1");
+        closse.addEventListener("click", function (e) {
+            e.preventDefault();
+            openModal.style.display = "none";
+        })
+
+        let closse1 = document.querySelector("#close2");
+        closse1.addEventListener("click", function (e) {
+            e.preventDefault();
+            openModal2.style.display = "none";
+        })
+        /*****************************end close part*/
+
+
+
+        /********************************add prices*/
+        tab = [];
+        prices_for_all_shop.forEach(function (el) {
+            tab.push(el.textContent)
+        })
+        /*****************************end add prices*/
+
+
+
+        /**********************************panner shop increment*/
+        panner_increment.addEventListener("click", function (e) {
+            e.preventDefault()
+            if (convertToNumber(span_increment.textContent) === 0) {
+                console.log("k");
+                openModal.style.display = "block";
+            } else {
+                total_add_click.textContent = span_increment.textContent;
+                total_command.textContent = total_shop.textContent + "€";
+                openModal2.style.display = "block";
+            }
+        })
+        /******************************end panner shop increment*/
+
+
+
+
+
+    </script>
+</body>
+
+</html>
